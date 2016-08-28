@@ -1,7 +1,10 @@
 const express = require('express')
+const installAppMiddlewares = require('./middlewares')
 const { logError } = require('./util/logger')
 
 const app = express()
+
+installAppMiddlewares(app)
 
 app.use('/', (req, res, next) => {
   res.send({ok: true})
