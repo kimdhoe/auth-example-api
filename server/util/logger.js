@@ -11,7 +11,7 @@ const logXs = xs => console.log(...xs)
 const consoleLog = shouldLog ? logXs : ()=>{}
 
 // Logs colorful messages with a tag prefixed.
-const log = (...xs) => {
+const logInfo = (...xs) => {
   const tag = green('[* LOG *]')
 
   const format = x =>
@@ -23,7 +23,7 @@ const log = (...xs) => {
 }
 
 // Logs colorful error messages with a tag prefixed.
-const error = (...es) => {
+const logError = (...es) => {
   const format = e => {
     e          = e.stack || e
     const name = e.name  || 'ERROR'
@@ -34,3 +34,6 @@ const error = (...es) => {
 
   consoleLog(map(es, format))
 }
+
+exports.logInfo  = logInfo
+exports.logError = logError
