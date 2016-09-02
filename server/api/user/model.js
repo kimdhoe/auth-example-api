@@ -1,6 +1,6 @@
-import shortid  from 'shortid'
-import bcrypt   from 'bcrypt'
-import { find } from 'lodash/find'
+import shortid from 'shortid'
+import bcrypt  from 'bcrypt'
+import find    from 'lodash/find'
 
 // digest : string -> string
 // Hashes a given string using bcrypt.
