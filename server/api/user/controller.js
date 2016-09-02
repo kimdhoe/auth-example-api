@@ -1,10 +1,11 @@
 import isEmpty from 'lodash/isEmpty'
 
-import validate     from '../../validations/signup'
+import validate      from '../../validations/signup'
 import { getUsers
        , findUser
-       , saveUser } from './model'
-import { logError } from '../../util/logger'
+       , saveUser }  from './model'
+import { logError }  from '../../util/logger'
+import { signToken } from '../../auth/auth'
 
 const validateUser = user => {
   const { errors } = validate(user)
@@ -32,7 +33,11 @@ export const create = (req, res, next) => {
       return res.status(500).json({ error: e })
     }
 
-    res.json({ success: true })
+    // 사용자 등록 성공시 바로 토큰을 보냅니다.
+    const { id, username } = findUser({ username: req.body.username })
+    const token = signToken(id)
+
+    res.json({ token, username })
   }
   else
     res.status(400).json(errors)
