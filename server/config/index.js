@@ -4,8 +4,10 @@ const TESTING     = 'testing'
 const PRODUCTION  = 'production'
 
 // state - Base configurations.
-const base = { env:  ''
-             , port: process.env.PORT || 8080
+const base = { env:      ''
+             , port:     process.env.PORT || 8080
+             , secrets:  { jwt: process.env.JWT || 'secretiamlookingforajob' }
+             , expireIn: '7 days'
              }
 
 process.env.NODE_ENV = process.env.NODE_ENV || DEVELOPMENT

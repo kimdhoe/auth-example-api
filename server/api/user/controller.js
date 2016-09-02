@@ -4,6 +4,7 @@ import validate     from '../../validations/signup'
 import { getUsers
        , findUser
        , saveUser } from './model'
+import { logError } from '../../util/logger'
 
 const validateUser = user => {
   const { errors } = validate(user)
@@ -23,13 +24,12 @@ export const create = (req, res, next) => {
   const { errors, isValid } = validateUser(req.body)
 
   if (isValid) {
-    const { username, password } = req.body
-
     try {
-      saveUser(username, password)
+      saveUser(req.body)
     }
     catch (e) {
-      return res.status(500).json({ error: err })
+      logError(e)
+      return res.status(500).json({ error: e })
     }
 
     res.json({ success: true })

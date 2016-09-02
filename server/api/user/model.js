@@ -2,6 +2,8 @@ import shortid from 'shortid'
 import bcrypt  from 'bcrypt'
 import find    from 'lodash/find'
 
+import { logInfo } from '../../util/logger'
+
 // digest : string -> string
 // Hashes a given string using bcrypt.
 const digest = s =>
@@ -24,9 +26,10 @@ const users = [ { id:              shortid.generate()
 
 // makeUser : string * string -> User
 // Produces a user.
-const makeUser = (username, password_digest) => (
+const makeUser = (username, email,  password_digest) => (
   { id: shortid.generate()
   , username
+  , email
   , password_digest
   }
 )
@@ -39,6 +42,16 @@ export const findUser = info =>
 
 // saveUser : string * string -> void
 // effect - saves a new user with the given name and password to users db.
-export const saveUser = (username, plainTextPassword) => {
-  users.push(makeUser(username, digest(plainTextPassword)))
+export const saveUser = ({ username, email, password }) => {
+  const newUser = makeUser(username, email, digest(password))
+
+  users.push(newUser)
+
+  logInfo('saved a new user:')
+  logInfo(newUser)
 }
+
+// authenticate : User * string -> boolean
+// Is a given password correct?
+export const authenticate = (user, password) =>
+  bcrypt.compareSync(password, user.password_digest)
