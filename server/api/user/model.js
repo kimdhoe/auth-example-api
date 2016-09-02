@@ -17,7 +17,7 @@ const digest = s =>
 
 // users : Array<User>
 // state - User DB.
-const users = [ { id:              shortid.generate()
+const users = [ { id:              'ByKT4GPs'
                 , username:        'guest'
                 , email:           'guest@example.com'
                 , password_digest: digest('guest')

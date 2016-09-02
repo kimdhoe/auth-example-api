@@ -3,8 +3,8 @@ import pick from 'lodash/pick'
 
 import { findUser
        , authenticate
-       }      from '../user/model'
-import config from '../../config'
+       }      from '../api/user/model'
+import config from '../config'
 
 // 토큰을 해독한 후, 사용자 ID를 request에 추가합니다.
 export const decodeToken = () => (req, res, next) => {

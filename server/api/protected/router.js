@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { decodeToken
-       , getUser } from '../auth/auth'
+       , getUser } from '../../auth/auth'
 import { create }  from './controller'
 
 const router = express.Router()
