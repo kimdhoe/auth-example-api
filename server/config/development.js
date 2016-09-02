@@ -1,4 +1,3 @@
-const devConfig =
-  { shouldLog: true }
+const devConfig = { shouldLog: true }
 
 module.exports = devConfig

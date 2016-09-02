@@ -1,4 +1,3 @@
-const testConfig =
-  { shouldLog: false }
+const testConfig = { shouldLog: false }
 
 module.exports = testConfig

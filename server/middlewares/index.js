@@ -1,7 +1,7 @@
-const bodyParser     = require('body-parser')
-const cors           = require('cors')
-const methodOverride = require('method-override')
-const morgan         = require('morgan')
+import bodyParser     from 'body-parser'
+import cors           from 'cors'
+import methodOverride from 'method-override'
+import morgan         from 'morgan'
 
 // effect - Installs application-wide middlewares into the given app.
 const installAppMiddlewares = app => {
@@ -12,4 +12,4 @@ const installAppMiddlewares = app => {
   app.use(morgan('dev'))
 }
 
-module.exports = installAppMiddlewares
+export default installAppMiddlewares

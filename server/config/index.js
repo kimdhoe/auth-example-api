@@ -1,28 +1,27 @@
-const _ = require('lodash')
-
 // A NodeEnv is one of:
 const DEVELOPMENT = 'development'
 const TESTING     = 'testing'
 const PRODUCTION  = 'production'
 
 // state - Base configurations.
-const config = { env:  ''
-               , port: process.env.PORT || 3000
-               }
+const base = { env:  ''
+             , port: process.env.PORT || 8080
+             }
 
 process.env.NODE_ENV = process.env.NODE_ENV || DEVELOPMENT
-config.env           = process.env.NODE_ENV
+base.env             = process.env.NODE_ENV
 
 // Environment specific configurations.
 let envConfig = {}
 try {
-  envConfig = require(`./${config.env}`)
+  envConfig = require(`./${base.env}`)
 }
 catch (e) {
-  console.log(`No configuration file for ${config.env}`)
+  console.log(`No configuration file for ${base.env}`)
 }
 
-// effect
-_.merge(config, envConfig)
+const config = { ...base
+               , ...envConfig
+               }
 
-module.exports = config
+export default config

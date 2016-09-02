@@ -1,4 +1,3 @@
-const prodConfig =
-  { shouldLog: false }
+const prodConfig = { shouldLog: false }
 
 module.exports = prodConfig

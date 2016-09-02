@@ -1,17 +1,16 @@
-const { map }    = require('lodash')
-const { cyan
-      , green
-      , red
-      , yellow } = require('colors')
-const shouldLog  = require('../config').shouldLog
+import config     from '../config'
+import { cyan
+       , green
+       , red
+       , yellow } from 'colors'
 
 // Given an array, console-logs the elements.
 const logXs = xs => console.log(...xs)
 
-const consoleLog = shouldLog ? logXs : ()=>{}
+const consoleLog = config.shouldLog ? logXs : () => {}
 
 // Logs colorful messages with a tag prefixed.
-const logInfo = (...xs) => {
+export const logInfo = (...xs) => {
   const tag = green('[* LOG *]')
 
   const format = x =>
@@ -19,21 +18,18 @@ const logInfo = (...xs) => {
       ? `${tag}  ${cyan(JSON.stringify(x, null, 2))}`
       : `${tag}  ${cyan(x)}`
 
-  consoleLog(map(xs, format))
+  consoleLog(xs.map(format))
 }
 
 // Logs colorful error messages with a tag prefixed.
-const logError = (...es) => {
+export const logError = (...es) => {
   const format = e => {
     e          = e.stack || e
-    const name = e.name  || 'ERROR'
+    const name = e.name  || 'ERR'
     const tag  = yellow(`[* ${name} *]`)
 
     return `${tag}  ${red(e)}`
   }
 
-  consoleLog(map(es, format))
+  consoleLog(es.map(format))
 }
-
-exports.logInfo  = logInfo
-exports.logError = logError
