@@ -8,7 +8,6 @@ const base = { env:      ''
              , port:     process.env.PORT || 8080
              , secrets:  { jwt: process.env.JWT || 'secretiamlookingforajob' }
              , expireIn: '7 days'
-             , morgan:   'dev'
              }
 
 process.env.NODE_ENV = process.env.NODE_ENV || DEVELOPMENT

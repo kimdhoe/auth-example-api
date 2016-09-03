@@ -1,3 +1,5 @@
-const devConfig = { shouldLog: true }
+const devConfig = { shouldLog: true
+                  , morgan:    'dev'
+                  }
 
 module.exports = devConfig
