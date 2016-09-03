@@ -1,7 +1,6 @@
 import express from 'express'
 
-import { params
-       , create } from './controller'
+import { create } from './controller'
 
 const router = express.Router()
 

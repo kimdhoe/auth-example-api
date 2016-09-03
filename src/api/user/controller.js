@@ -21,7 +21,7 @@ const validateUser = user => {
          }
 }
 
-export const create = (req, res, next) => {
+export const create = (req, res) => {
   const { errors, isValid } = validateUser(req.body)
 
   if (isValid) {

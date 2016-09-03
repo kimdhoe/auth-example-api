@@ -24,9 +24,9 @@ const users = [ { id:              'ByKT4GPs'
                 }
               ]
 
-// makeUser : string * string -> User
+// makeUser : string * string * string -> User
 // Produces a user.
-const makeUser = (username, email,  password_digest) => (
+const makeUser = (username, email, password_digest) => (
   { id: shortid.generate()
   , username
   , email
@@ -40,7 +40,7 @@ const makeUser = (username, email,  password_digest) => (
 export const findUser = info =>
   find(users, info)
 
-// saveUser : string * string -> void
+// saveUser : { string, string, string } -> void
 // effect - saves a new user with the given name and password to users db.
 export const saveUser = ({ username, email, password }) => {
   const newUser = makeUser(username, email, digest(password))
