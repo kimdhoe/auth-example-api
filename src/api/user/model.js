@@ -34,7 +34,7 @@ const makeUser = (username, email, password_digest) => (
   }
 )
 
-// findUser : string -> User or undefined
+// findUser : { string } -> User or undefined
 // effect - Finds a user with the given information in users DB.
 // e.g. findUser({ username: 'foo' })
 export const findUser = info =>
