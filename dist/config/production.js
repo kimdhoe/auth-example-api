@@ -1,5 +1,7 @@
-"use strict";
+'use strict';
 
-var prodConfig = { shouldLog: false };
+var prodConfig = { shouldLog: false,
+                   morgan: 'combined'
+};
 
 module.exports = prodConfig;

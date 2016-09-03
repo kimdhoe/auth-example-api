@@ -1,5 +1,7 @@
-"use strict";
+'use strict';
 
-var devConfig = { shouldLog: true };
+var devConfig = { shouldLog: true,
+                  morgan: 'dev'
+};
 
 module.exports = devConfig;
