@@ -1,7 +1,7 @@
 {
-  "name": "auth-api",
-  "version": "0.0.0",
-  "description": "JWT authentication API example",
+  "name": "auth-example-api",
+  "version": "0.0.1",
+  "description": "API for JWT-based authentication example",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch . --exec babel-node -- index.js",
