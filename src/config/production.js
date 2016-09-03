@@ -1,3 +1,5 @@
-const prodConfig = { shouldLog: false }
+const prodConfig = { shouldLog: false
+                   , morgan: 'combined'
+                   }
 
 module.exports = prodConfig
